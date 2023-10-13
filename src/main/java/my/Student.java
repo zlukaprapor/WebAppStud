@@ -5,14 +5,23 @@ public class Student {
     private String surname;
     private String email;
 
-    public Student(){}
+    private String error;
+
+    public Student() {
+        error = "";
+    }
 
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name != null && !name.trim().isEmpty()) {
+            this.name = name;
+            error = ""; // Скидаємо помилку
+        } else {
+            error = "Ім'я не може бути пустим або null";
+        }
     }
 
     public String getSurname() {
@@ -20,7 +29,12 @@ public class Student {
     }
 
     public void setSurname(String surname) {
-        this.surname = surname;
+        if (surname != null && !surname.trim().isEmpty()) {
+            this.surname = surname;
+            error = ""; // Скидаємо помилку
+        } else {
+            error = "Прізвище не може бути пустим або null";
+        }
     }
 
 
@@ -30,5 +44,9 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getError() {
+        return error;
     }
 }
